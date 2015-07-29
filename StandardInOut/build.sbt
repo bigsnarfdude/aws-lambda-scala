@@ -2,7 +2,7 @@ javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 
 lazy val root = (project in file(".")).
   settings(
-    name := "lambda-in-scala",
+    name := "lambda-in-scala-stdin",
     version := "1.0",
     scalaVersion := "2.11.4",
     retrieveManaged := true,
