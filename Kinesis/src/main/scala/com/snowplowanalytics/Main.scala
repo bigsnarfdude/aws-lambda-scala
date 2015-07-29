@@ -5,20 +5,18 @@ import com.amazonaws.services.lambda.runtime.events.KinesisEvent
 import com.amazonaws.services.lambda.runtime.events.KinesisEvent.KinesisEventRecord
 import scala.collection.JavaConversions._
 
-//case class DataSchema(dataSchema: Map[String, Any])
 case class DataSource(dataSource: Map[String,Any])
 case class Parser(parser: Map[String, Any])
 case class MetricsSpec(metricsSpec: Any) 
 case class GranularitySpec(granularitySpec: Any)
-
-case class DataSchema(dataSchema:Map[String, Any])
+case class DataSchema(dataSchema:Map[String, Map[dataSource:DataSource, parser:Parser, metricsSpec:MetricsSpec, granularitySpec:GranularitySpec])
 
 class ProcessKinesisEvents {
     
     import com.fasterxml.jackson.databind.ObjectMapper
     import com.fasterxml.jackson.module.scala.DefaultScalaModule
 
-	val scalaMapper = {  
+    val scalaMapper = {  
       new ObjectMapper().registerModule(new DefaultScalaModule)
     }
 
