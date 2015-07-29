@@ -7,7 +7,8 @@ lazy val root = (project in file(".")).
     scalaVersion := "2.11.4",
     retrieveManaged := true,
     libraryDependencies += "com.amazonaws" % "aws-lambda-java-core" % "1.0.0",
-    libraryDependencies += "com.amazonaws" % "aws-lambda-java-events" % "1.0.0"
+    libraryDependencies += "com.amazonaws" % "aws-lambda-java-events" % "1.0.0",
+    libraryDependencies += "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.5.2"
   )
 
 mergeStrategy in assembly := {
