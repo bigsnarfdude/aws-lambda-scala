@@ -1,6 +1,6 @@
 # aws-lambda-scala
 
-
+```
 aws lambda create-function \
 --region us-west-2 \
 --function-name lambda-function-in-scala \
@@ -10,3 +10,4 @@ aws lambda create-function \
 --runtime java8 \
 --timeout 15 \
 --memory-size 512
+```
