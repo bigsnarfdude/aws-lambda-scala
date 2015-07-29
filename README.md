@@ -28,3 +28,11 @@ aws lambda create-function \
 --timeout 15 \
 --memory-size 512
 ```
+
+### Update Kinesis Function
+```
+aws lambda update-function-code \
+--region us-west-2 \
+--function-name lambda-function-in-scala-kinesis \
+--zip-file fileb://aws-lambda-scala/Kinesis/target/scala-2.11/lambda-in-scala-assembly-1.0.jar
+```
