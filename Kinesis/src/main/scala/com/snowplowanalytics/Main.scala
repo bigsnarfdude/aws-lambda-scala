@@ -5,11 +5,21 @@ import com.amazonaws.services.lambda.runtime.events.KinesisEvent
 import com.amazonaws.services.lambda.runtime.events.KinesisEvent.KinesisEventRecord
 import scala.collection.JavaConversions._
 
-case class DataSource(dataSource: Map[String,Any])
-case class Parser(parser: Map[String, Any])
-case class MetricsSpec(metricsSpec: Any) 
-case class GranularitySpec(granularitySpec: Any)
-case class DataSchema(dataSchema:Map[String, Map[dataSource:DataSource, parser:Parser, metricsSpec:MetricsSpec, granularitySpec:GranularitySpec])
+// Either[DataSource,ParserSpec,TimestampSpecColumn,TimestampSpecFormat])
+case class DataSource(dataSource: String)
+case class DataSchema(dataSchema: DataSource) 
+case class ParserType(`type`: String)
+case class ParserSpec(parser: ParseSpecFormat)
+case class ParseSpecFormat(format: String)
+case class ParseSpec(parseSpec: ParseSpecFormat)
+case class TimestampSpecColumn(column: String)
+case class TimestampSpecFormat(format: String)
+case class TimestampSpec(timestampSpec: Either[TimestampSpecColumn,TimestampSpecFormat])
+case class MetricUnit(`type`: String, name: String, fieldName: Option[String] = None)
+case class MetricsSpec(metricsSpec: List[MetricUnit])
+case class QueryGranularity(queryGranularity: String)
+case class GranularitySpec(granularitySpec: QueryGranularity)
+
 
 class ProcessKinesisEvents {
     
@@ -21,11 +31,11 @@ class ProcessKinesisEvents {
     }
 
     def recordHandler(event: KinesisEvent) {
-    for (rec <- event.getRecords) {
-      val record = new String(rec.getKinesis.getData.array())
-      val dataSchema = scalaMapper.readValue(record, classOf[DataSchema])
-      println(dataSchema)
-    }
-  }
+	    for (rec <- event.getRecords) {
+	      val record = new String(rec.getKinesis.getData.array())
+	      val dataSchema = scalaMapper.readValue(record, classOf[MetricsSpec])
+	      println(dataSchema)
+	    }
+	}
 }
 
