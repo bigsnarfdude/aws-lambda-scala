@@ -9,7 +9,6 @@ import scala.collection.JavaConversions._
 case class TimestampSpec(column: String, format: String)
 case class ParseSpec(format: String, timestampSpec: TimestampSpec)
 case class ParserTypes(`type`: String, parseSpec: ParseSpec)
-case class Parser(parser: ParserTypes)
 
 // MetricsSpec
 case class MetricUnit(`type`: String, name: String, fieldName: Option[String] = None)
