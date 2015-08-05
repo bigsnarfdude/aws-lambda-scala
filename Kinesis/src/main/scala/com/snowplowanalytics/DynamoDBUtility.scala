@@ -80,7 +80,7 @@ object DynamoUtils {
         .withString(tableparserSecondaryKeyName, parser)
         .withString(tableCreatedAtColumnName, createdAt)
         .withString(tablemetricsSpecColumnName, metricsSpec)
-        .withInt(tablegranularitySpecColumnName, granularitySpec)
+        .withString(tablegranularitySpecColumnName, granularitySpec)
 
       // saving the data to DynamoDB AggregrateRecords table
       // println(item)
