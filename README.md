@@ -36,3 +36,5 @@ aws lambda update-function-code \
 --function-name lambda-function-in-scala-kinesis \
 --zip-file fileb://aws-lambda-scala/Kinesis/target/scala-2.11/lambda-in-scala-assembly-1.0.jar
 ```
+
+.
